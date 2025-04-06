@@ -584,7 +584,7 @@ body {
   background-color: black;
 }
 
-#fullscreenButton {
+.fullscreen-btn {
   position: absolute;
   top: 0px;
   right: 230px;
@@ -598,7 +598,7 @@ body {
   z-index: 1100; /* Make sure it's on top of the iframe */
 }
 
-#fullscreenButton:hover {
+.fullscreen-btn:hover {
   background-color: black;
 }
 
@@ -875,7 +875,7 @@ body {
   background-color: black;
 }
 
-#fullscreenButton {
+.fullscreen-btn {
   position: absolute;
   top: 0px;
   right: 230px;
@@ -889,7 +889,7 @@ body {
   z-index: 1100; /* Make sure it's on top of the iframe */
 }
 
-#fullscreenButton:hover {
+.fullscreen-btn:hover {
   background-color: black;
 }
 

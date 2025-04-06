@@ -538,7 +538,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // Fulscreen Button Start
-<script>
   function toggleFullscreen() {
     const iframe = document.getElementById('iframe');
     
@@ -566,4 +565,4 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
     }
   }
-</script>
+

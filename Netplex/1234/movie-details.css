@@ -584,6 +584,24 @@ body {
   background-color: black;
 }
 
+#fullscreenBtn {
+  position: absolute;
+  top: 10px;
+  right: 90px;
+  background-color: #0296cc;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1100; /* Make sure it's on top of the iframe */
+}
+
+#fullscreenBtn:hover {
+  background-color: black;
+}
+
 .server-dropdown {
   position: absolute;
   top: 50px;  /* Space below the Change Server button */
@@ -2331,6 +2349,9 @@ meta[http-equiv="refresh"] {
   #iframe-container {
     top: 35;
     height: calc(100% - 35px);
+  }
+  #fullscreenBtn {
+    top: -35;
   }
   #close-iframe-btn {
     top: -35;

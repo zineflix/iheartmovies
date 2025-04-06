@@ -537,4 +537,33 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
-
+// Fulscreen Button Start
+<script>
+  function toggleFullscreen() {
+    const iframe = document.getElementById('iframe');
+    
+    if (iframe.requestFullscreen) {
+      iframe.requestFullscreen().then(() => {
+        if (screen.orientation && screen.orientation.lock) {
+          screen.orientation.lock('landscape').catch(err => {
+            console.warn('Orientation lock failed:', err);
+          });
+        }
+      });
+    } else if (iframe.webkitRequestFullscreen) {
+      iframe.webkitRequestFullscreen();
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(err => {
+          console.warn('Orientation lock failed:', err);
+        });
+      }
+    } else if (iframe.msRequestFullscreen) {
+      iframe.msRequestFullscreen();
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(err => {
+          console.warn('Orientation lock failed:', err);
+        });
+      }
+    }
+  }
+</script>

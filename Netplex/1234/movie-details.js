@@ -543,11 +543,11 @@ document.getElementById("fullscreenButton").addEventListener("click", function (
 
     if (iframe.requestFullscreen) {
         iframe.requestFullscreen();
-    } else if (movie-iframe.mozRequestFullScreen) { // Firefox
+    } else if (iframe.mozRequestFullScreen) { // Firefox
         iframe.mozRequestFullScreen();
-    } else if (movie-iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
         iframe.webkitRequestFullscreen();
-    } else if (movie-iframe.msRequestFullscreen) { // IE/Edge
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
         iframe.msRequestFullscreen();
     }
     // Rotate the screen to landscape mode (Only works on mobile browsers)

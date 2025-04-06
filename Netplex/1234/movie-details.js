@@ -515,6 +515,10 @@ function toggleFullscreen() {
   } else if (iframe.msRequestFullscreen) {
     iframe.msRequestFullscreen();
   }
+  // Rotate the screen to landscape mode (Only works on mobile browsers)
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(error => console.log("Orientation lock failed:", error));
+    }  
 }
 // Fullscreen Button Movie End //
 

@@ -539,16 +539,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 // Fullscreen Button Movie Start //
 document.getElementById("fullscreenButton").addEventListener("click", function () {
-    let movie-iframe = document.getElementById("movie-iframe");
+    let iframe = document.getElementById("movie-iframe");
 
-    if (movie-iframe.requestFullscreen) {
-        movie-iframe.requestFullscreen();
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
     } else if (movie-iframe.mozRequestFullScreen) { // Firefox
-        movie-iframe.mozRequestFullScreen();
+        iframe.mozRequestFullScreen();
     } else if (movie-iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
-        movie-iframe.webkitRequestFullscreen();
+        iframe.webkitRequestFullscreen();
     } else if (movie-iframe.msRequestFullscreen) { // IE/Edge
-        movie-iframe.msRequestFullscreen();
+        iframe.msRequestFullscreen();
     }
     // Rotate the screen to landscape mode (Only works on mobile browsers)
     if (screen.orientation && screen.orientation.lock) {

@@ -538,24 +538,30 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // Fulscreen Button Start
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("fullscreenBtn").addEventListener("click", function () {
-    var iframe = document.querySelector("iframe");
-    if (iframe.requestFullscreen) {
-      iframe.requestFullscreen().then(() => {
-        if (screen.orientation && screen.orientation.lock) {
-          screen.orientation.lock("landscape").catch(error => console.log("Orientation lock failed:", error));
-        }
-      });
-    } else if (iframe.mozRequestFullScreen) {
-      iframe.mozRequestFullScreen();
-    } else if (iframe.webkitRequestFullscreen) {
-      iframe.webkitRequestFullscreen();
-    } else if (iframe.msRequestFullscreen) {
-      iframe.msRequestFullscreen();
-    }
-  });
+document.getElementById('fullscreenBtn').addEventListener('click', () => {
+  const iframe = document.querySelector('iframe');
+  
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen().then(() => {
+      lockOrientation();
+    });
+  } else if (iframe.webkitRequestFullscreen) { // Safari
+    iframe.webkitRequestFullscreen();
+    lockOrientation();
+  } else if (iframe.msRequestFullscreen) { // IE11
+    iframe.msRequestFullscreen();
+    lockOrientation();
+  }
 });
+
+function lockOrientation() {
+  if (screen.orientation && screen.orientation.lock) {
+    screen.orientation.lock('landscape').catch((err) => {
+      console.warn('Orientation lock failed:', err);
+    });
+  }
+}
+
 
 
 

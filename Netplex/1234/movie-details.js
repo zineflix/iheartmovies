@@ -539,7 +539,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 // Fullscreen Button Movie Start //
 document.getElementById("fullscreenButton").addEventListener("click", function () {
-    let iframe = document.getElementById("movie-iframe");
+    let movie-iframe = document.getElementById("movie-iframe");
 
     if (movie-iframe.requestFullscreen) {
         movie-iframe.requestFullscreen();

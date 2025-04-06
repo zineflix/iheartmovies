@@ -541,21 +541,16 @@ document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById("fullscreenBtn").addEventListener("click", function () {
     var iframe = document.querySelector("iframe");
     if (iframe.requestFullscreen) {
-      iframe.requestFullscreen().then(() => {
-        if (screen.orientation && screen.orientation.lock) {
-          screen.orientation.lock("landscape").catch(err => {
-            console.warn("Orientation lock failed:", err);
-          });
-        }
-      });
-    } else if (iframe.webkitRequestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) { // Firefox
+      iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
       iframe.webkitRequestFullscreen();
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock("landscape").catch(err => {
-          console.warn("Orientation lock failed:", err);
-        });
-      }
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
+      iframe.msRequestFullscreen();
     }
   });
+
+
 
 

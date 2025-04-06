@@ -538,31 +538,20 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // Fulscreen Button Start
-  function toggleFullscreen() {
-    const iframe = document.getElementById('iframe');
-    
+ document.getElementById("fullscreenBtn").addEventListener("click", function () {
+    var iframe = document.querySelector("iframe");
     if (iframe.requestFullscreen) {
-      iframe.requestFullscreen().then(() => {
-        if (screen.orientation && screen.orientation.lock) {
-          screen.orientation.lock('landscape').catch(err => {
-            console.warn('Orientation lock failed:', err);
-          });
-        }
-      });
-    } else if (iframe.webkitRequestFullscreen) {
+      iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) { // Firefox
+      iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
       iframe.webkitRequestFullscreen();
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('landscape').catch(err => {
-          console.warn('Orientation lock failed:', err);
-        });
-      }
-    } else if (iframe.msRequestFullscreen) {
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
       iframe.msRequestFullscreen();
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('landscape').catch(err => {
-          console.warn('Orientation lock failed:', err);
-        });
-      }
     }
-  }
+    // Rotate the screen to landscape mode (Only works on mobile browsers)
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(error => console.log("Orientation lock failed:", error));
+    }
+  });
 

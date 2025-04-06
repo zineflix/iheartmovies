@@ -528,4 +528,3 @@ document.getElementById("fullscreenButton").addEventListener("click", function (
 
 
 
-

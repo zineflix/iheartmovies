@@ -2350,7 +2350,7 @@ meta[http-equiv="refresh"] {
     top: 35;
     height: calc(100% - 35px);
   }
-  #fullscreenBtn {
+  #fullscreenButton {
     top: -35;
   }
   #close-iframe-btn {

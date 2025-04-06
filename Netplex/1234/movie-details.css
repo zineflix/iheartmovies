@@ -875,6 +875,24 @@ body {
   background-color: black;
 }
 
+#fullscreenBtn {
+  position: absolute;
+  top: 0px;
+  right: 180px;
+  background-color: #0296cc;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1100; /* Make sure it's on top of the iframe */
+}
+
+#fullscreenBtn:hover {
+  background-color: black;
+}
+
 .server-dropdown {
   position: absolute;
   top: 50px;  /* Space below the Change Server button */

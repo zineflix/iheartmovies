@@ -504,25 +504,18 @@ function closeMessage() {
 
 
 // Fullscreen Button Movie Start //
-document.getElementById("fullscreenButton").addEventListener("click", function () {
-    let iframe = document.getElementById("movie-iframe");
-
-    // Request fullscreen for the iframe
-    if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-    } else if (iframe.mozRequestFullScreen) { // Firefox
-        iframe.mozRequestFullScreen();
-    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
-        iframe.webkitRequestFullscreen();
-    } else if (iframe.msRequestFullscreen) { // IE/Edge
-        iframe.msRequestFullscreen();
-    }
-
-    // Rotate the screen to landscape mode (Only works on mobile browsers)
-    if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock("landscape").catch(error => console.log("Orientation lock failed:", error));
-    }
-});
+function toggleFullscreen() {
+  const iframe = document.querySelector('iframe');
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.mozRequestFullScreen) {
+    iframe.mozRequestFullScreen();
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) {
+    iframe.msRequestFullscreen();
+  }
+}
 // Fullscreen Button Movie End //
 
 

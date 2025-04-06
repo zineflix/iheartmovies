@@ -537,30 +537,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
-// Fulscreen Button Start
-document.getElementById('fullscreenBtn').addEventListener('click', () => {
-  const iframe = document.querySelector('iframe');
-  
-  if (iframe.requestFullscreen) {
-    iframe.requestFullscreen().then(() => {
-      lockOrientation();
-    });
-  } else if (iframe.webkitRequestFullscreen) { // Safari
-    iframe.webkitRequestFullscreen();
-    lockOrientation();
-  } else if (iframe.msRequestFullscreen) { // IE11
-    iframe.msRequestFullscreen();
-    lockOrientation();
-  }
-});
+// Fullscreen Button Movie Start //
+document.getElementById("fullscreenButton").addEventListener("click", function () {
+    let iframe = document.getElementById("iframe");
 
-function lockOrientation() {
-  if (screen.orientation && screen.orientation.lock) {
-    screen.orientation.lock('landscape').catch((err) => {
-      console.warn('Orientation lock failed:', err);
-    });
-  }
-}
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
+    }
+    // Rotate the screen to landscape mode (Only works on mobile browsers)
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(error => console.log("Orientation lock failed:", error));
+    }
+});
+// Fullscreen Button Movie End //
 
 
 

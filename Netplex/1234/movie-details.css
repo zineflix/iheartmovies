@@ -857,7 +857,7 @@ body {
   background-color: black;
 }
 
-#fullscreenBtn {
+#fullscreenButton {
   position: absolute;
   top: 0px;
   right: 230px;
@@ -871,7 +871,7 @@ body {
   z-index: 1100; /* Make sure it's on top of the iframe */
 }
 
-#fullscreenBtn:hover {
+#fullscreenButton:hover {
   background-color: black;
 }
 

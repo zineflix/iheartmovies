@@ -63,7 +63,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOR RESPONSIVE NAVIGATION BAR START -->  
 <nav>
     <!-- Logo -->
-    <img id="logo" src="https://netplex.pages.dev/img/netplex.png" alt="NETPLEX">
+    <img id="logo" src="" alt="iHeartMovies">
 
     <!-- Menu Button (visible only on mobile) -->
     <span class="menu-btn" id="menu-btn">Menu</span>
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
 <!-- Footer Start -->  
 <footer class="site-footer">
-  <p>&copy; 2025 Netplex.site — All Rights Reserved.</p>
+  <p>&copy; 2025 iHeartMovies — All Rights Reserved.</p>
   <p>Made with ❤️ for movie lovers worldwide.</p>
   <div class="footer-links">
     <a href="contact-us.html">Contact Us</a> |
@@ -236,79 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </footer>
 <!-- Footer End -->  
 
-
-
-
-  <style>
-    /* Basic styles for the widget */
-    #stats-widget {
-      padding: 20px;
-      background-color: #f1f1f1;
-      border-radius: 8px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      width: 250px;
-      font-family: Arial, sans-serif;
-    }
-
-    #stats-widget h3 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    #stats-widget p {
-      margin: 5px 0;
-      font-size: 16px;
-    }
-  </style>
-
-
-
-  <div id="stats-widget">
-    <h3>Website Stats</h3>
-    <p>Page Views: <span id="page-view-count">Loading...</span></p>
-    <p>Unique Visitors: <span id="unique-visitors-count">Loading...</span></p>
-  </div>
-
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-  <script>
-    // Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyB_-y5W2-82aGvc_hv1XfNIPTTTXi0SHm8",
-      authDomain: "netplex-online-statistics.firebaseapp.com",
-      databaseURL: "https://netplex-online-statistics-default-rtdb.firebaseio.com",
-      projectId: "netplex-online-statistics",
-      storageBucket: "netplex-online-statistics.firebasestorage.app",
-      messagingSenderId: "858720967728",
-      appId: "1:858720967728:web:d8ef1f11ee2c45783fa1f5",
-      measurementId: "G-09SSMG6XEB"
-    };
-
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const database = firebase.database(app);
-
-    // Function to update the stats widget with data from Firebase
-    function updateStatsWidget() {
-      const pageViewRef = database.ref('pageViews');
-      pageViewRef.once('value', (snapshot) => {
-        document.getElementById('page-view-count').innerText = snapshot.val() || 0;
-      });
-
-      const uniqueVisitorsRef = database.ref('uniqueVisitors');
-      uniqueVisitorsRef.once('value', (snapshot) => {
-        document.getElementById('unique-visitors-count').innerText = snapshot.numChildren() || 0;
-      });
-    }
-
-    // Update stats on page load
-    window.onload = updateStatsWidget;
-  </script>
-
-
-
-
-    
+   
 </body>
   
 </html>

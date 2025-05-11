@@ -236,6 +236,103 @@ document.addEventListener("DOMContentLoaded", function () {
 </footer>
 <!-- Footer End -->  
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+
+<script>
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyB_-y5W2-82aGvc_hv1XfNIPTTTXi0SHm8",
+    authDomain: "netplex-online-statistics.firebaseapp.com",
+    databaseURL: "https://netplex-online-statistics-default-rtdb.firebaseio.com",
+    projectId: "netplex-online-statistics",
+    storageBucket: "netplex-online-statistics.firebasestorage.app",
+    messagingSenderId: "858720967728",
+    appId: "1:858720967728:web:d8ef1f11ee2c45783fa1f5",
+    measurementId: "G-09SSMG6XEB"
+  };
+
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const analytics = firebase.analytics(app);
+  const database = firebase.database();
+</script>
+
+<div id="stats-widget">
+  <h3>Website Stats</h3>
+  <p>Page Views: <span id="page-view-count">Loading...</span></p>
+  <p>Unique Visitors: <span id="unique-visitors-count">Loading...</span></p>
+</div>
+
+<script>
+// Example: Track page views and unique visitors
+
+// Function to increment page view count
+function incrementPageView() {
+  const pageViewRef = database.ref('pageViews');
+  pageViewRef.transaction((currentValue) => (currentValue || 0) + 1);
+}
+
+// Function to store unique visitors (using sessionStorage for simplicity)
+function trackUniqueVisitor() {
+  const visitorId = sessionStorage.getItem('visitorId');
+  if (!visitorId) {
+    // Generate a unique ID (or use a library like UUID)
+    const newVisitorId = 'visitor_' + Date.now();
+    sessionStorage.setItem('visitorId', newVisitorId);
+
+    // Store unique visitor in the database
+    const visitorsRef = database.ref('uniqueVisitors');
+    visitorsRef.child(newVisitorId).set(true);
+  }
+}
+
+// Call the tracking functions
+incrementPageView();
+trackUniqueVisitor();
+</script>
+
+<script>
+// Function to update the widget with current stats
+function updateStatsWidget() {
+  const pageViewRef = database.ref('pageViews');
+  pageViewRef.once('value', (snapshot) => {
+    document.getElementById('page-view-count').innerText = snapshot.val() || 0;
+  });
+
+  const uniqueVisitorsRef = database.ref('uniqueVisitors');
+  uniqueVisitorsRef.once('value', (snapshot) => {
+    document.getElementById('unique-visitors-count').innerText = snapshot.numChildren() || 0;
+  });
+}
+
+// Update stats when the page loads
+window.onload = updateStatsWidget;
+</script>
+
+<style>
+  #stats-widget {
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    font-family: Arial, sans-serif;
+  }
+
+  #stats-widget h3 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  #stats-widget p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+</style>
+    
    
 </body>
   
